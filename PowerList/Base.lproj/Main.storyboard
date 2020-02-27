@@ -7,6 +7,41 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Item View Controller-->
+        <scene sceneID="H9W-Yh-tHm">
+            <objects>
+                <viewController id="44U-gS-7Pl" customClass="ItemViewController" customModule="PowerList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nlq-Gl-ZqA" customClass="ItemViewcontroller" customModule="PowerList" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="xeQ-fp-bT8"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ncb-IX-5nX"/>
+                    <connections>
+                        <segue destination="VU8-4m-zLa" kind="show" id="P81-dW-6N7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="44R-Vp-aaf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1899" y="127"/>
+        </scene>
+        <!--Note View Controller-->
+        <scene sceneID="Pzb-ms-Wa3">
+            <objects>
+                <viewController id="VU8-4m-zLa" customClass="NoteViewController" customModule="PowerList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G1R-Fn-yyJ" customClass="NoteViewControlle">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="5K7-IJ-WE6"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3iB-Mo-cNL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zOu-NT-gtk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2759" y="127"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -19,6 +54,16 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="689"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="tQV-2l-iWj">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tQV-2l-iWj" id="Lfe-lF-Fsn">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ek8-t5-Fzk">
                                 <rect key="frame" x="0.0" y="774" width="414" height="122"/>
@@ -41,6 +86,7 @@
                     <connections>
                         <outlet property="completedLabel" destination="Ek8-t5-Fzk" id="Sap-Uw-DEN"/>
                         <outlet property="tableOfitem" destination="yd6-S2-92T" id="4Wh-AQ-Q41"/>
+                        <segue destination="44U-gS-7Pl" kind="show" id="MBj-8O-KfB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
