@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,9 @@
 		C02ABB4423FD798A00B3CB42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C02ABB4223FD798A00B3CB42 /* Main.storyboard */; };
 		C02ABB4623FD799000B3CB42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C02ABB4523FD799000B3CB42 /* Assets.xcassets */; };
 		C02ABB4923FD799000B3CB42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C02ABB4723FD799000B3CB42 /* LaunchScreen.storyboard */; };
+		C077A0E72407F77600EE8C22 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077A0E62407F77600EE8C22 /* Item.swift */; };
+		C077A0E92407F7C600EE8C22 /* PoweredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077A0E82407F7C600EE8C22 /* PoweredList.swift */; };
+		C077A0EC2407FC3600EE8C22 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C077A0EB2407FC3600EE8C22 /* Note.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		C02ABB4523FD799000B3CB42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C02ABB4823FD799000B3CB42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C02ABB4A23FD799000B3CB42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C077A0E62407F77600EE8C22 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		C077A0E82407F7C600EE8C22 /* PoweredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoweredList.swift; sourceTree = "<group>"; };
+		C077A0EB2407FC3600EE8C22 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		C9A7C6AD7FF0103DD9547694 /* Pods_PowerList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PowerList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -56,7 +62,6 @@
 				02C97B18A0DBDC414B208E35 /* Pods-PowerList.debug.xcconfig */,
 				06022C8DE6F8D20DADAA82DF /* Pods-PowerList.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -88,8 +93,19 @@
 				C02ABB4523FD799000B3CB42 /* Assets.xcassets */,
 				C02ABB4723FD799000B3CB42 /* LaunchScreen.storyboard */,
 				C02ABB4A23FD799000B3CB42 /* Info.plist */,
+				C077A0EA2407F7D300EE8C22 /* Model */,
 			);
 			path = PowerList;
+			sourceTree = "<group>";
+		};
+		C077A0EA2407F7D300EE8C22 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C077A0E82407F7C600EE8C22 /* PoweredList.swift */,
+				C077A0E62407F77600EE8C22 /* Item.swift */,
+				C077A0EB2407FC3600EE8C22 /* Note.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,9 +223,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C077A0E72407F77600EE8C22 /* Item.swift in Sources */,
 				C02ABB4123FD798A00B3CB42 /* ViewController.swift in Sources */,
 				C02ABB3D23FD798A00B3CB42 /* AppDelegate.swift in Sources */,
+				C077A0E92407F7C600EE8C22 /* PoweredList.swift in Sources */,
 				C02ABB3F23FD798A00B3CB42 /* SceneDelegate.swift in Sources */,
+				C077A0EC2407FC3600EE8C22 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
