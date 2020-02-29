@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 private let reuseIdentifier = "Cell"
 
 class NoteViewController: UICollectionViewController {
+    
+    var notes : Results<Note>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
