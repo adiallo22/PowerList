@@ -27,8 +27,8 @@ class ItemViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     func load() {
