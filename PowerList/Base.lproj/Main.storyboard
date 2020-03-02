@@ -36,6 +36,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ncb-IX-5nX"/>
                     <connections>
+                        <outlet property="tableView" destination="TQV-uE-QhO" id="3hU-CC-n6B"/>
                         <segue destination="VU8-4m-zLa" kind="show" id="P81-dW-6N7"/>
                     </connections>
                 </viewController>
@@ -103,7 +104,7 @@
                     <connections>
                         <outlet property="completedLabel" destination="Ek8-t5-Fzk" id="Sap-Uw-DEN"/>
                         <outlet property="tableView" destination="7dD-IP-N7t" id="tWo-w4-5c4"/>
-                        <segue destination="44U-gS-7Pl" kind="show" id="MBj-8O-KfB"/>
+                        <segue destination="44U-gS-7Pl" kind="show" identifier="goToItem" id="MBj-8O-KfB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

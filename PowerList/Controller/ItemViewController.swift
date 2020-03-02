@@ -9,18 +9,31 @@
 import UIKit
 import RealmSwift
 
-private let reuseIdentifier = "Cell"
+//private let reuseIdentifier = "Cell"
 
 class ItemViewController: UICollectionViewController, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var items : Results<Item>?
     
     let realm = try! Realm()
+    
+    var chosenPoweredList : PoweredList? {
+        didSet {
+            //load()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
+    }
+    
+    func load() {
+        items = realm.objects(Item.self)
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

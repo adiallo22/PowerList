@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
 
     @IBOutlet weak var tableView: UITableView!
@@ -26,6 +26,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         load()
         navigationItem.title = "My Power List"
         tableView.dataSource = self
+        tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         completedLabel.text = "Completed : \(score)/\(lists!.count)"
     }
@@ -80,9 +81,20 @@ class ViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToItem", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ItemViewController
+        if let indexpath = tableView.indexPathForSelectedRow {
+            destinationVC.chosenPoweredList = lists?[indexpath.row]
+        }
+    }
+    
 }
 
-//MARK: - <#section heading#>
+//MARK: - tableview data source
 
 
 
