@@ -15,17 +15,21 @@ class ViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var completedLabel: UILabel!
     
+    private var score = 0
+    
     var lists : Results<PoweredList>?
     let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        tableView.rowHeight = 75.0
         load()
         navigationItem.title = "My Power List"
         tableView.dataSource = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        completedLabel.text = "Completed : \(score)/\(lists!.count)"
     }
+    
     
     func load () {
         lists = realm.objects(PoweredList.self)
@@ -40,11 +44,25 @@ class ViewController: UIViewController, UITableViewDataSource {
         } catch {
             print("error saving - \(error)")
         }
-        
+        tableView.reloadData()
     }
 
     @IBAction func addItem(_ sender: UIBarButtonItem) {
-        
+        var newList = UITextField()
+        var alert = UIAlertController(title: "Add New List", message: "", preferredStyle: .alert)
+        alert.addTextField { (alert) in
+            alert.placeholder = "Type List Here ..."
+            newList = alert
+        }
+        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+            let newItem = PoweredList()
+            newItem.name = newList.text!
+            newItem.date = Date()
+            self.tableView.reloadData()
+            self.save(list: newItem)
+        }
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,6 +75,7 @@ class ViewController: UIViewController, UITableViewDataSource {
             cell.textLabel?.text = existingList.name
         } else {
             cell.textLabel?.text = "Empty List"
+            print("emplty list")
         }
         return cell
     }
