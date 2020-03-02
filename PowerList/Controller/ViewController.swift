@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController {
     
 
     @IBOutlet weak var tableView: UITableView!
@@ -30,7 +30,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         completedLabel.text = "Completed : \(score)/\(lists!.count)"
     }
+
+    @IBAction func addItem(_ sender: UIBarButtonItem) {
+        var newList = UITextField()
+        let alert = UIAlertController(title: "Add New List", message: "", preferredStyle: .alert)
+        alert.addTextField { (alert) in
+            alert.placeholder = "Type List Here ..."
+            newList = alert
+        }
+        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+            let newItem = PoweredList()
+            newItem.name = newList.text!
+            newItem.date = Date()
+            self.tableView.reloadData()
+            self.save(list: newItem)
+        }
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
     
+}
+
+//MARK: - functions of realm
+
+extension ViewController {
     
     func load () {
         lists = realm.objects(PoweredList.self)
@@ -47,24 +70,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         tableView.reloadData()
     }
+    
+}
 
-    @IBAction func addItem(_ sender: UIBarButtonItem) {
-        var newList = UITextField()
-        var alert = UIAlertController(title: "Add New List", message: "", preferredStyle: .alert)
-        alert.addTextField { (alert) in
-            alert.placeholder = "Type List Here ..."
-            newList = alert
-        }
-        let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            let newItem = PoweredList()
-            newItem.name = newList.text!
-            newItem.date = Date()
-            self.tableView.reloadData()
-            self.save(list: newItem)
-        }
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-    }
+//MARK: - tableview data source
+
+extension ViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lists?.count ?? 1
@@ -81,6 +92,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
+}
+
+//MARK: - tableview delegate
+
+extension ViewController : UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToItem", sender: self)
     }
@@ -93,8 +110,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
 }
-
-//MARK: - tableview data source
 
 
 

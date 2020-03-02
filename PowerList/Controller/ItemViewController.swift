@@ -11,7 +11,7 @@ import RealmSwift
 
 //private let reuseIdentifier = "Cell"
 
-class ItemViewController: UICollectionViewController, UITableViewDataSource {
+class ItemViewController: UICollectionViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -35,6 +35,12 @@ class ItemViewController: UICollectionViewController, UITableViewDataSource {
         items = realm.objects(Item.self)
         tableView.reloadData()
     }
+
+}
+
+//MARK: - tableview data source
+
+extension ItemViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items?.count ?? 1
@@ -49,5 +55,19 @@ class ItemViewController: UICollectionViewController, UITableViewDataSource {
         }
         return cell
     }
+    
+}
 
+//MARK: - tableview delegate
+
+extension ItemViewController : UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToNote", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //
+    }
+    
 }
