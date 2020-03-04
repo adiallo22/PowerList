@@ -11,7 +11,7 @@ import RealmSwift
 
 private let reuseIdentifier = "Cell"
 
-class NoteViewController: UICollectionViewController {
+class NoteViewController: UIViewController {
     
     var notes : Results<Note>?
 

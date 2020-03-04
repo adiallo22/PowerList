@@ -11,7 +11,7 @@ import RealmSwift
 
 //private let reuseIdentifier = "Cell"
 
-class ItemViewController: UICollectionViewController {
+class ItemViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
