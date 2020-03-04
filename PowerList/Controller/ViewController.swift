@@ -30,6 +30,10 @@ class ViewController: UIViewController {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         completedLabel.text = "Completed : \(score)/\(lists!.count)"
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
 
     @IBAction func addItem(_ sender: UIBarButtonItem) {
         var newList = UITextField()
@@ -100,6 +104,7 @@ extension ViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToItem", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -34,7 +34,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="xeQ-fp-bT8"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ncb-IX-5nX"/>
+                    <navigationItem key="navigationItem" id="ncb-IX-5nX">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Rhk-9A-6yy">
+                            <connections>
+                                <action selector="addNewItem:" destination="44U-gS-7Pl" id="ZvS-BW-WX1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="TQV-uE-QhO" id="3hU-CC-n6B"/>
                         <segue destination="VU8-4m-zLa" kind="show" identifier="goToNote" id="P81-dW-6N7"/>

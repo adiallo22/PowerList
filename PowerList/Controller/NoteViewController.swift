@@ -16,6 +16,12 @@ class NoteViewController: UIViewController {
     @IBOutlet weak var report: UILabel!
     @IBOutlet weak var userNote: UITextField!
     
+    var chosenItem : Item? {
+        didSet {
+            
+        }
+    }
+    
     var notes : Results<Note>?
 
     override func viewDidLoad() {
