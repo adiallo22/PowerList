@@ -13,6 +13,7 @@ class Note : Object {
     
     @objc dynamic var message : String = ""
     @objc dynamic var done : Bool = false
+    @objc dynamic var date : Date? 
     //
     let parentCategory = LinkingObjects(fromType: Item.self, property: "notes")
     

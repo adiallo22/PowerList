@@ -9,9 +9,12 @@
 import UIKit
 import RealmSwift
 
-private let reuseIdentifier = "Cell"
-
 class NoteViewController: UIViewController {
+    
+    @IBOutlet weak var completionStatus: UISegmentedControl!
+    
+    @IBOutlet weak var report: UILabel!
+    @IBOutlet weak var userNote: UITextField!
     
     var notes : Results<Note>?
 
