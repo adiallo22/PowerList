@@ -14,6 +14,7 @@ import RealmSwift
 class ItemViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var completionBar: UIProgressView!
     
     var things : Results<Item>?
     
@@ -29,6 +30,9 @@ class ItemViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         tableView.rowHeight = 75.0
         navigationItem.title = chosenPoweredList?.name
     }

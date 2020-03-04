@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var completedLabel: UILabel!
     
     private var score = 0
     
@@ -22,17 +21,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 75.0
         load()
-        navigationItem.title = "My Power List"
         tableView.dataSource = self
         tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        completedLabel.text = "Completed : \(score)/\(lists!.count)"
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        navigationItem.title = "My Power List"
+        tableView.rowHeight = 75.0
     }
 
     @IBAction func addItem(_ sender: UIBarButtonItem) {
