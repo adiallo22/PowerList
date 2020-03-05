@@ -20,6 +20,8 @@ class ItemViewController: UIViewController {
     
     let realm = try! Realm()
     
+    private var count = 0
+    
     var chosenPoweredList : PoweredList? {
         didSet {
             load()
@@ -30,16 +32,6 @@ class ItemViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.rowHeight = 75.0
-        navigationItem.title = chosenPoweredList?.name
-    }
-    
-    func load() {
-        things = chosenPoweredList?.items.sorted(byKeyPath: "title", ascending: true)
-        //tableView.reloadData()
     }
 
     @IBAction func addNewItem(_ sender: UIBarButtonItem) {
@@ -58,6 +50,8 @@ class ItemViewController: UIViewController {
                         let newItem = Item()
                         newItem.title = toBeAdded.text!
                         curr.items.append(newItem)
+                        self.count += 1
+                        print(self.count)
                     }
                 } catch {
                     print("error - saving ... - \(error)")
@@ -70,6 +64,29 @@ class ItemViewController: UIViewController {
         
     }
 }
+
+//MARK: - section heading
+
+extension ItemViewController {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.rowHeight = 75.0
+        navigationItem.title = chosenPoweredList?.name
+    }
+    
+    func load() {
+        things = chosenPoweredList?.items.sorted(byKeyPath: "title", ascending: true)
+    }
+    
+    func updateUI() {
+        
+        //completionBar.observedProgress = count
+        
+    }
+    
+}
+
+
 
 //MARK: - tableview data source
 
@@ -90,6 +107,8 @@ extension ItemViewController : UITableViewDataSource {
     }
     
 }
+
+
 
 //MARK: - tableview delegate
 

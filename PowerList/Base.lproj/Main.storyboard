@@ -70,11 +70,14 @@
                                     <segment title="Undone"/>
                                     <segment title="Done"/>
                                 </segments>
+                                <connections>
+                                    <action selector="completedOrNot:" destination="VU8-4m-zLa" eventType="valueChanged" id="Lwu-Kf-2kq"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSY-1b-HVe">
                                 <rect key="frame" x="46" y="231" width="319" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

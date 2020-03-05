@@ -12,7 +12,7 @@ import RealmSwift
 class Item : Object {
     
     @objc dynamic var title : String = ""
-    @objc dynamic var count : Int = 0
+    @objc dynamic var date : Date?
     //
     let parentCategory = LinkingObjects(fromType: PoweredList.self, property: "items")
     let notes = List<Note>()
