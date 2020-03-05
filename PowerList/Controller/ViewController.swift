@@ -73,6 +73,19 @@ extension ViewController {
         tableView.reloadData()
     }
     
+    func delete (at : IndexPath) {
+        if let toBeDeleted = lists?[at.row] {
+            do {
+                try realm.write {
+                    realm.delete(toBeDeleted)
+                }
+            } catch {
+                print("error deleting - \(error)")
+            }
+            
+        }
+    }
+    
 }
 
 //MARK: - tableview data source
@@ -84,7 +97,7 @@ extension ViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SwipeTableViewCell
         if let existingList = lists?[indexPath.row] {
             cell.textLabel?.text = existingList.name
         } else {
@@ -92,6 +105,19 @@ extension ViewController : UITableViewDataSource {
             print("emplty list")
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            // handle action by updating model with deletion
+        }
+
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete")
+
+        return [deleteAction]
     }
     
 }
