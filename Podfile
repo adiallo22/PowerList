@@ -7,5 +7,6 @@ target 'PowerList' do
 
   # Pods for PowerList
 	pod 'RealmSwift'
+  pod 'SwipeCellKit'
 
 end
