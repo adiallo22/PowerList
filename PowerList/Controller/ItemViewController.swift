@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-import SwipeCellKit
+//import SwipeCellKit
 
 //private let reuseIdentifier = "Cell"
 
