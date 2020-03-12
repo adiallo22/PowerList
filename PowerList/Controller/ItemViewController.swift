@@ -10,12 +10,12 @@ import UIKit
 import RealmSwift
 //import SwipeCellKit
 
-//private let reuseIdentifier = "Cell"
-
 class ItemViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var completionBar: UIProgressView!
+    
+    private var score = 0
     
     var things : Results<Item>?
     

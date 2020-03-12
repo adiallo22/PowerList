@@ -14,8 +14,6 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    private var score = 0
-    
     var lists : Results<PoweredList>?
     let realm = try! Realm()
     
@@ -30,6 +28,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.title = "My Power List"
         tableView.rowHeight = 75.0
+        //print(realm.configuration.fileURL!.deletingLastPathComponent().path)
     }
 
     @IBAction func addItem(_ sender: UIBarButtonItem) {
@@ -43,8 +42,8 @@ class ViewController: UIViewController {
             let newItem = PoweredList()
             newItem.name = newList.text!
             newItem.date = Date()
-            self.tableView.reloadData()
             self.save(list: newItem)
+            self.tableView.reloadData()
         }
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
@@ -99,9 +98,9 @@ extension ViewController : UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         if let existingList = lists?[indexPath.row] {
             cell.textLabel?.text = existingList.name
+            //cell.backgroundColor = UIColor(
         } else {
             cell.textLabel?.text = "Empty List"
-            print("emplty list")
         }
         return cell
     }

@@ -44,30 +44,26 @@ class NoteViewController: UIViewController {
 
     @IBAction func completedOrNot(_ sender: UISegmentedControl) {
         
-//        if let curr = self.chosenItem {
-//
-//            do {
-//                
-//                try realm.write {
-//
-//                    let newNote = Note()
-//                    newNote.date = Date()
-//                    if sender.selectedSegmentIndex == 0 {
-//                        newNote.message = "YOU NEED TO COMPLETE THE TASK"
-//                        report.text = newNote.message
-//                        newNote.done = false
-//                    } else {
-//                        newNote.message = "WELL DONE !"
-//                        report.text = newNote.message
-//                        newNote.done = true
-//                    }
-//                    curr.notes.append(newNote)
-//                }
-//
-//            } catch {
-//                print("error saving new notes - \(error)")
-//            }
-//        }
+        if let curr = chosenItem {
+            do {
+                try realm.write {
+                    var newNote = Note()
+                    newNote.date = Date()
+                    if completionStatus.selectedSegmentIndex == 0 {
+                        newNote.done = false
+                        report.text = "YOU HAVE TO DO THE TASK"
+                    } else {
+                        newNote.done = true
+                        report.text = "GREAT JOB !"
+                    }
+                    newNote.message = userNote.text ?? ""
+                    curr.notes.append(newNote)
+                }
+            } catch {
+                print("error saving note - \(error)")
+            }
+        }
+        
         
     }
     
